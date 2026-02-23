@@ -14,11 +14,21 @@ print(result)
 # [12, 8, 5.0, 20]
 '''
 
-num1 = int(input("Enter first number: "))
-num2 = int(input("Enter second number: "))
+
 def basic_math_list(a: int, b: int) -> list:
-    return [a + b, a - b, a * b, a / b]
-print(basic_math_list(num1, num2))
+    result.append(a + b)
+    result.append(a - b)
+    result.append(a / b)
+    result.append(a * b)
+    return result
+result = []
+num1 = int(input("Enter first number: "))
+while True:
+    num2 = int(input("Enter second number : "))
+    if num2 == 0:
+        print("no need to handle division by zero")
+        continue
+    print(basic_math_list(num1, num2))
 
 
 

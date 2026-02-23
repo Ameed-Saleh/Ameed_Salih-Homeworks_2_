@@ -71,6 +71,8 @@ Wrong.. the answer was 1
 '''
 
 import random
+from unittest import case
+
 SKY = "\033[1;34;40m"
 GREEN = "\033[0;32;40m"
 RED = "\033[0;31;40m"
@@ -83,17 +85,17 @@ def get_random_operation() -> str:
     return random.choice(['+', '-', '*', '%', '//'])
 
 def calc_result(num1: int, oper: str, num2: int) -> int:
-    if oper == '+':
-        return num1 + num2
-    elif oper == '-':
-        return num1 - num2
-    elif oper == '*':
-        return num1 * num2
-    elif oper == '%':
-        return num1 % num2
-    elif oper == '//':
-        return num1 // num2
-
+    match oper:
+        case '+':
+            return num1 + num2
+        case '-':
+            return num1 - num2
+        case '*':
+            return num1 * num2
+        case '%':
+            return num1 % num2
+        case '//':
+            return num1 // num2
 current_round = 0
 max_rounds = 10
 while True:
@@ -105,11 +107,11 @@ while True:
     print(f"{SKY}       round {current_round}      {RESET}")
     print(f"{num1} {oper} {num2} = ?")
     user_result = int(input('whats the result? '))
-    if current_round >= max_rounds:
+    if current_round == max_rounds:
         break
     if result == user_result:
         print(f"{GREEN}Correct answer!{RESET}")
-        break
+        print("")
     else:
         print(f"{RED} Wrong.... the answer was {result} {RESET}")
         print("-" * 30)

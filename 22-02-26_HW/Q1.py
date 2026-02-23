@@ -15,9 +15,10 @@ print_numbers(3, 7)
 # 7
 '''
 
+def print_numbers(_start:int, _stop:int):
+    for num in range(_start, _stop+1):
+        print(num)
+
 num1 = int(input("Enter start number: "))
 num2 = int(input("Enter stop number: "))
-def print_numbers(_start:int, _stop:int):
-    for i in range(_start, _stop+1):
-        print(i)
 print_numbers(num1, num2)
