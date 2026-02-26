@@ -46,7 +46,6 @@ questions = [
 
 #          0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19
 answers = [1, 3, 3, 2, 2, 4, 3, 4, 2, 3, 3, 2, 3, 2, 3, 4, 4, 3, 4, 2]
-
 import random
 ## 🧠 What You Should Implement
 ## You must create and implement the following functions:
@@ -62,10 +61,10 @@ def get_random_question():
     '''Returns a random index from the questions list'''
     return random.randint(0, len(questions) - 1)
 
-def display_question(question_index):
+def display_question(index):
     '''Prints the question at the given index'''
     print(" ")
-    print(f"{SKY}The Question: {RESET} {WHITE}{questions[question_index]}{RESET} ")
+    print(f"{SKY}The Question: {RESET} {WHITE}{questions[index]}{RESET} ")
 
 def get_user_choice():
     '''Returns a user choice as an integer'''
@@ -76,30 +75,26 @@ def get_user_choice():
         print(f"{RED}Invalid input. Please enter a number between 1 and 4.{RESET}")
 
 
-def  user_answer_is_correct(index, user_choice):
+def  user_answer_is_correct(index, choice):
     '''
     Returns True if the answer is correct
     Returns False otherwise'''
-    if answers[index] == user_choice:
-        return True
-    else:
-        return False
+    return answers[index] == choice
 
 def remove_question(index):
     '''
     Removes the question at the given index'''
-    return questions.pop(index) and answers.pop(index)
+    questions.pop(index)
+    answers.pop(index)
 
-
-def check_if_score_is_5(score):
+def check_if_score_is_5(user_score):
     '''
     Returns True if the score is 5'''
-    return score == 5
+    return user_score == 5
 
-def check_if_miss_is_3(miss):
+def check_if_miss_is_3(user_miss):
     '''Returns True if miss == 3'''
-    return miss == 3
-
+    return user_miss == 3
 
 ## 🔄 Game Flow (Main Logic)
 ## Your program should follow this structure:
@@ -121,7 +116,7 @@ while True:
         print(f"{GREEN}the correct answer was {answers[question_index]}{RESET}")
     # remove the used question so it will not appear again
     remove_question(question_index)
-
+    print(f"{GREEN}Score: {score} |{RED} Miss: {miss}{RESET}")
     if check_if_score_is_5(score):
         print(f'{PINK}WINNER 🏆!!!{RESET}')
         break
