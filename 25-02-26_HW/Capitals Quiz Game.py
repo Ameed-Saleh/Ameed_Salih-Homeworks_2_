@@ -96,6 +96,12 @@ def check_if_miss_is_3(user_miss):
     '''Returns True if miss == 3'''
     return user_miss == 3
 
+def correct_answer(index: int) -> None:
+    a = questions[index].split(f"({answers[index]})")
+    a = a[1]
+    a = a.split()
+    print(f"{GREEN}The correct answer was:  {a[0]}{RESET}")
+
 ## 🔄 Game Flow (Main Logic)
 ## Your program should follow this structure:
 score = 0
@@ -113,7 +119,7 @@ while True:
     else:
         miss += 1
         print(f'{RED}❌ You are wrong!{RESET}')
-        print(f"{GREEN}the correct answer was {answers[question_index]}{RESET}")
+        correct_answer(question_index)
     # remove the used question so it will not appear again
     remove_question(question_index)
     print(f"{GREEN}Score: {score} |{RED} Miss: {miss}{RESET}")
