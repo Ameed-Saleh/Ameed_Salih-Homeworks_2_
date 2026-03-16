@@ -14,32 +14,28 @@ If is_quick_service and not is_expensive print recommended
 Otherwise print not recommended
 '''
 
-while True:
-    _rating = int(input("Enter a number between 1 and 5: "))
-    _valid = 1 <= _rating <= 5
-    if _valid:
-        print("valid")
-    else:
-        print("invalid")
-    _best = _rating == 5
-    if _best:
-        print("best")
-    else:
-        print("not best")
-    _medium = 2 < _rating < 4
-    if _valid and not _medium:
-        print("score high or low")
-    else:
-        print("medium")
 
-    _num = int(input("Enter a number: "))
-    _positive = _num >= 0
-    if _positive:
-        print("positive")
-    else:
-        print("negative")
-    _even = _num % 2 == 0
-    if _even:
-        print("even")
-    else:
-        print("odd")
+import time
+minutes: int = int(input("How long will it take to deliver the meal? "))
+is_quick_service: bool = minutes <= 15
+if not is_quick_service:
+    time.sleep(1)
+    print("--- It's been too long than I thought ")
+else:
+    print("--- Okay, you can start preparing the meal ")
+
+print("-"*40)
+shekels:int = int(input("What is the price of the meal?"))
+is_expensive: bool = shekels > 100
+if is_expensive:
+    print("--- The price of this meal is expensive!!")
+else:
+    time.sleep(1)
+    print("--- The price of this meal is not expensive at all")
+
+print("*"*40)
+time.sleep(2)
+if is_quick_service and not is_expensive:
+    print("--- Highly recommended")
+else:
+    print ("--- not recommended ")

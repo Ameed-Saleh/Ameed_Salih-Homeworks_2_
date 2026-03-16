@@ -12,4 +12,4 @@ for num in list1:
     else:
         list_odd.append(num)
 print(f"list_odd= {list_odd}")
-print(f"lise_even= {list_even}")
+print(f"list_even= {list_even}")
